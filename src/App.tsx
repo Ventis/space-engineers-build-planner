@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { MouseEvent, useState } from 'react';
 import './App.css';
+import DebugModal from './view/DebugModal';
 
 function App() {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={openModal}>Open Modal</button>
+      <DebugModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 }
